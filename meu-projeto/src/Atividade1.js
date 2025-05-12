@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import Letreiro from "./Letreiro";
-import Relogio from './Relogio';
+import Letreiro from "./atividade1/Letreiro";
+import Relogio from './atividade1/Relogio';
 
 export default function Atividade1() {
     return(

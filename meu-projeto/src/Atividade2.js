@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import ContadorPessoas from './ContadorPessoas';
+import ContadorPessoas from './atividade2/ContadorPessoas';
 
 export default function Atividade1() {
     return(
