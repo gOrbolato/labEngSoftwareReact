@@ -1,4 +1,4 @@
-import { people } from '../data/people';
+import { people } from './dataPeople';
 import Avatar from './Avatar';
 
 export default function ScientristList() {
