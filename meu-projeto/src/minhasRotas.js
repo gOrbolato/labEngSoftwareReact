@@ -6,6 +6,7 @@ import Atividade2 from "./Atividade2";
 import Atividade3 from "./Atividade3";
 import Atividade4 from "./Atividade4";
 import Atividade5 from "./Atividade5";
+import Atividade6 from "./Atividade6";
 
 export default function MinhasRotas(){
     return(
@@ -17,6 +18,7 @@ export default function MinhasRotas(){
                 <Route path="/Atividade3" element={<Atividade3 />} />
                 <Route path="/Atividade4" element={<Atividade4 />} />
                 <Route path="/Atividade5" element={<Atividade5 />} />
+                <Route path="/Atividade6" element={<Atividade6 />} />
             </Routes>
         </BrowserRouter>
     );
