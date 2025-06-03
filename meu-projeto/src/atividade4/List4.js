@@ -1,52 +1,58 @@
 import React, { useState } from 'react';
 
 const initialList = [
-  { id: 0, title: 'Big Bellies' },
-  { id: 1, title: 'Lunar Landscape' },
-  { id: 2, title: 'Terracotta Army' },
+  { id: 0, title: 'Big Bellies', seen: false },
+  { id: 1, title: 'Lunar Landscape', seen: false },
+  { id: 2, title: 'Terracotta Army', seen: false },
 ];
 
-export default function List4() {
-  const [list, setList] = useState(initialList);
+function ItemList({ artworks, onToggle }) {
+  return (
+    <ul style={{ padding: 0, listStyle: 'none' }}>
+      {artworks.map(artwork => (
+        <li key={artwork.id} style={{ marginBottom: 8 }}>
+          <label>
+            <input
+              type="checkbox"
+              checked={artwork.seen}
+              onChange={e => {
+                onToggle(artwork.id, e.target.checked);
+              }}
+            />{' '}
+            {artwork.title}
+          </label>
+        </li>
+      ))}
+    </ul>
+  );
+}
 
-  function handleReverse() {
-    setList(prevList => [...prevList].reverse());
+export default function BucketList() {
+  const [myList, setMyList] = useState(initialList);
+  const [yourList, setYourList] = useState(initialList);
+
+  function handleToggleMyList(artworkId, nextSeen) {
+    setMyList(myList =>
+      myList.map(item =>
+        item.id === artworkId ? { ...item, seen: nextSeen } : item
+      )
+    );
+  }
+
+  function handleToggleYourList(artworkId, nextSeen) {
+    setYourList(yourList =>
+      yourList.map(item =>
+        item.id === artworkId ? { ...item, seen: nextSeen } : item
+      )
+    );
   }
 
   return (
     <div style={{ padding: 24 }}>
-      <h2>Lista de Obras</h2>
-      <button
-        onClick={handleReverse}
-        style={{
-          padding: "8px 16px",
-          background: "#1976d2",
-          color: "#fff",
-          border: "none",
-          borderRadius: 4,
-          fontWeight: "bold",
-          cursor: "pointer",
-          marginBottom: 16
-        }}
-      >
-        Inverter ordem
-      </button>
-      <ul style={{ padding: 0, listStyle: "none" }}>
-        {list.map(item => (
-          <li
-            key={item.id}
-            style={{
-              background: "#f5f5f5",
-              marginBottom: 8,
-              padding: "8px 12px",
-              borderRadius: 4,
-              boxShadow: "0 1px 3px rgba(0,0,0,0.06)"
-            }}
-          >
-            {item.title}
-          </li>
-        ))}
-      </ul>
+      <h2>Minha lista de obras</h2>
+      <ItemList artworks={myList} onToggle={handleToggleMyList} />
+      <h2>Sua lista de obras</h2>
+      <ItemList artworks={yourList} onToggle={handleToggleYourList} />
     </div>
   );
 }
