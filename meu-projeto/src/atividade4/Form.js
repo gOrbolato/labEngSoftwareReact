@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 
 export default function Form() {
-  const [to, setTo] = useState('Alice');
+  const [to, setTo] = useState('Bob');
   const [message, setMessage] = useState('Hello');
 
   function handleSubmit(e) {
     e.preventDefault();
     setTimeout(() => {
-      alert(`Você disse "${message}" para ${to}`);
+      alert(`You said "${message}" to ${to}`);
     }, 2000);
   }
 
@@ -22,9 +22,9 @@ export default function Form() {
         margin: "0 auto"
       }}
     >
-      <h2>Enviar Mensagem</h2>
+      <h2>Form</h2>
       <label style={{ display: "block", marginBottom: 12 }}>
-        Para:
+        To:
         <select
           value={to}
           onChange={e => setTo(e.target.value)}
@@ -39,20 +39,22 @@ export default function Form() {
           <option value="Bob">Bob</option>
         </select>
       </label>
-      <label style={{ display: "block", marginBottom: 16 }}>
-        Mensagem:
-        <input
-          value={message}
-          onChange={e => setMessage(e.target.value)}
-          style={{
-            marginLeft: 8,
-            padding: "6px",
-            borderRadius: 4,
-            border: "1px solid #ccc",
-            width: "70%"
-          }}
-        />
-      </label>
+      
+      <textarea
+        placeholder="Message"
+        value={message}
+        onChange={e => setMessage(e.target.value)}
+        style={{
+          display: 'block',
+          width: '95%',
+          marginBottom: 16,
+          padding: "6px",
+          borderRadius: 4,
+          border: "1px solid #ccc",
+          minHeight: '60px'
+        }}
+      />
+      
       <button
         type="submit"
         style={{
@@ -65,7 +67,7 @@ export default function Form() {
           cursor: "pointer"
         }}
       >
-        Enviar
+        Send
       </button>
     </form>
   );

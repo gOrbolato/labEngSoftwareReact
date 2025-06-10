@@ -10,39 +10,21 @@ export default function Form3() {
     }
   });
 
-  function handleNameChange(e) {
+
+  function handlePersonChange(e) {
     setPerson({
       ...person,
-      name: e.target.value
+      [e.target.name]: e.target.value
     });
   }
 
-  function handleTitleChange(e) {
+
+  function handleArtworkChange(e) {
     setPerson({
       ...person,
       artwork: {
         ...person.artwork,
-        title: e.target.value
-      }
-    });
-  }
-
-  function handleCityChange(e) {
-    setPerson({
-      ...person,
-      artwork: {
-        ...person.artwork,
-        city: e.target.value
-      }
-    });
-  }
-
-  function handleImageChange(e) {
-    setPerson({
-      ...person,
-      artwork: {
-        ...person.artwork,
-        image: e.target.value
+        [e.target.name]: e.target.value
       }
     });
   }
@@ -55,61 +37,41 @@ export default function Form3() {
       maxWidth: 400,
       margin: "0 auto"
     }}>
-      <h2>Artista e Obra</h2>
+      <h2>Form3</h2>
       <label style={{ display: "block", marginBottom: 8 }}>
-        Nome do artista:
+        Name:
         <input
+          name="name"
           value={person.name}
-          onChange={handleNameChange}
-          style={{
-            marginLeft: 8,
-            padding: "6px",
-            borderRadius: 4,
-            border: "1px solid #ccc",
-            width: "70%"
-          }}
+          onChange={handlePersonChange}
+          style={{ marginLeft: 8, padding: "6px", borderRadius: 4, border: "1px solid #ccc", width: "70%" }}
         />
       </label>
       <label style={{ display: "block", marginBottom: 8 }}>
-        Título da obra:
+        Title:
         <input
+          name="title"
           value={person.artwork.title}
-          onChange={handleTitleChange}
-          style={{
-            marginLeft: 8,
-            padding: "6px",
-            borderRadius: 4,
-            border: "1px solid #ccc",
-            width: "70%"
-          }}
+          onChange={handleArtworkChange}
+          style={{ marginLeft: 8, padding: "6px", borderRadius: 4, border: "1px solid #ccc", width: "70%" }}
         />
       </label>
       <label style={{ display: "block", marginBottom: 8 }}>
-        Cidade:
+        City:
         <input
+          name="city"
           value={person.artwork.city}
-          onChange={handleCityChange}
-          style={{
-            marginLeft: 8,
-            padding: "6px",
-            borderRadius: 4,
-            border: "1px solid #ccc",
-            width: "70%"
-          }}
+          onChange={handleArtworkChange}
+          style={{ marginLeft: 8, padding: "6px", borderRadius: 4, border: "1px solid #ccc", width: "70%" }}
         />
       </label>
       <label style={{ display: "block", marginBottom: 16 }}>
-        URL da imagem:
+        Image:
         <input
+          name="image"
           value={person.artwork.image}
-          onChange={handleImageChange}
-          style={{
-            marginLeft: 8,
-            padding: "6px",
-            borderRadius: 4,
-            border: "1px solid #ccc",
-            width: "70%"
-          }}
+          onChange={handleArtworkChange}
+          style={{ marginLeft: 8, padding: "6px", borderRadius: 4, border: "1px solid #ccc", width: "70%" }}
         />
       </label>
       <div style={{
@@ -118,16 +80,18 @@ export default function Form3() {
         padding: 12,
         boxShadow: "0 1px 3px rgba(0,0,0,0.06)"
       }}>
-        <p><b>{person.artwork.title}</b> de {person.name} (local: {person.artwork.city})</p>
+        <p>
+          <i>{person.artwork.title}</i>
+          {' by '}
+          {person.name}
+          {' (located in '}
+          {person.artwork.city}
+          {')'}
+        </p>
         <img
           src={person.artwork.image}
           alt={person.artwork.title}
-          style={{
-            width: "100%",
-            maxWidth: 320,
-            borderRadius: 8,
-            marginTop: 8
-          }}
+          style={{ width: "100%", maxWidth: 320, borderRadius: 8, marginTop: 8 }}
         />
       </div>
     </form>

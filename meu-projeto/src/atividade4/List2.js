@@ -15,7 +15,7 @@ export default function List2() {
 
   return (
     <div style={{ padding: 24 }}>
-      <h2>Escultores Inspiradores</h2>
+      <h2>List2</h2>
       <ul style={{ padding: 0, listStyle: "none" }}>
         {artists.map(artist => (
           <li
@@ -44,7 +44,7 @@ export default function List2() {
                 fontWeight: "bold"
               }}
             >
-              Remover
+              Delete
             </button>
           </li>
         ))}

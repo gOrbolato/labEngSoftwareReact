@@ -63,5 +63,4 @@ export const sculptureList = [
     url: 'https://i.imgur.com/3A3QZ0y.jpg',
     alt: 'Escultura de bronze de um homem sentado, curvado para frente com a mão no queixo.'
   }
-  // Adicione mais esculturas seguindo o mesmo padrão, se desejar
 ];

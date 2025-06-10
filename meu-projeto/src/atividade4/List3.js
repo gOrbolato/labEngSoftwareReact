@@ -13,7 +13,7 @@ export default function List3() {
 
   function handleAdd() {
     if (!name.trim()) return;
-    const insertAt = 1;
+    const insertAt = 1; // Insere após o primeiro item
     const nextArtists = [
       ...artists.slice(0, insertAt),
       { id: nextId++, name: name.trim() },
@@ -25,9 +25,8 @@ export default function List3() {
 
   return (
     <div style={{ padding: 24 }}>
-      <h2>Lista de Artistas</h2>
+      <h2>Inspiring sculptors:</h2>
       <input
-        placeholder="Novo artista"
         value={name}
         onChange={e => setName(e.target.value)}
         style={{
@@ -49,7 +48,7 @@ export default function List3() {
           cursor: "pointer"
         }}
       >
-        Adicionar no meio
+        Insert
       </button>
       <ul style={{ padding: 0, listStyle: "none", marginTop: 16 }}>
         {artists.map(artist => (

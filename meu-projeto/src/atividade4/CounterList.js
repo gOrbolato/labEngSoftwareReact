@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 const initialCounters = [0, 0, 0];
 
@@ -11,28 +11,9 @@ export default function CounterList() {
     );
   }
 
-  function handleResetAll() {
-    setCounters(initialCounters);
-  }
-
   return (
     <div style={{ padding: 24 }}>
-      <h2>Lista de Contadores</h2>
-      <button
-        onClick={handleResetAll}
-        style={{
-          padding: "8px 16px",
-          background: "#d32f2f",
-          color: "#fff",
-          border: "none",
-          borderRadius: 4,
-          fontWeight: "bold",
-          cursor: "pointer",
-          marginBottom: 16
-        }}
-      >
-        Resetar todos
-      </button>
+      <h2>CounterList</h2>
       <ul style={{ padding: 0, listStyle: "none" }}>
         {counters.map((count, i) => (
           <li
@@ -48,7 +29,7 @@ export default function CounterList() {
               justifyContent: "space-between"
             }}
           >
-            <span>Contador {i + 1}: {count}</span>
+            <span>{count}</span>
             <button
               onClick={() => handleIncrementClick(i)}
               style={{

@@ -1,6 +1,5 @@
 import React from "react";
 
-// Botão genérico com estilo moderno
 function Button({ onClick, children, style }) {
   return (
     <button
@@ -26,31 +25,29 @@ function Button({ onClick, children, style }) {
   );
 }
 
-// Botão de Play
 function PlayButton({ movieName }) {
   function handlePlayClick() {
-    alert(`Reproduzindo "${movieName}"!`);
+    alert(`Playing ${movieName}!`);
   }
   return (
     <Button onClick={handlePlayClick}>
-      ▶ Play "{movieName}"
+      Play Movie
     </Button>
   );
 }
 
-// Botão de Upload
 function UploadButton() {
   function handleUploadClick() {
-    alert("Upload iniciado!");
+    alert("Uploading image!");
   }
   return (
+
     <Button onClick={handleUploadClick} style={{ background: "#43a047" }}>
-      ⬆ Upload
+      Upload Image
     </Button>
   );
 }
 
-// Toolbar moderna
 export default function Toolbar() {
   return (
     <div style={{
@@ -61,7 +58,7 @@ export default function Toolbar() {
       borderRadius: "8px",
       boxShadow: "0 2px 8px rgba(0,0,0,0.06)"
     }}>
-      <PlayButton movieName="Interestelar" />
+      <PlayButton movieName="Kiki's Delivery Service" />
       <UploadButton />
     </div>
   );

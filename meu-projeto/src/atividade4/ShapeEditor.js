@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 const initialShapes = [
   { id: 0, type: "circle", x: 50, y: 100 },
@@ -20,8 +20,8 @@ export default function ShapeEditor() {
   }
 
   return (
-    <div style={{ padding: 24 }}>
-      <h2>Editor de Formas</h2>
+    <div style={{ padding: 24, position: 'relative' }}>
+      <h2>ShapeEditor</h2>
       <button
         onClick={handleMoveCircles}
         style={{
@@ -35,35 +35,28 @@ export default function ShapeEditor() {
           marginBottom: 16
         }}
       >
-        Mover círculos para baixo
+        Move circles down!
       </button>
-      <svg width={320} height={220} style={{ background: "#f5f5f5", borderRadius: 8 }}>
-        {shapes.map(shape =>
-          shape.type === "circle" ? (
-            <circle
-              key={shape.id}
-              cx={shape.x}
-              cy={shape.y}
-              r={30}
-              fill="#1976d2"
-              stroke="#1565c0"
-              strokeWidth={2}
-            />
-          ) : (
-            <rect
-              key={shape.id}
-              x={shape.x - 30}
-              y={shape.y - 30}
-              width={60}
-              height={60}
-              fill="#43a047"
-              stroke="#2e7d32"
-              strokeWidth={2}
-              rx={8}
-            />
-          )
-        )}
-      </svg>
+      
+      <div style={{ position: 'relative', height: '200px', border: '1px solid black', background: '#f9f9f9' }}>
+        {shapes.map(shape => (
+          <div
+            key={shape.id}
+            style={{
+              background: 'purple', 
+              position: 'absolute',
+              left: shape.x,
+              top: shape.y,
+              borderRadius:
+                shape.type === 'circle'
+                  ? '50%'
+                  : '',
+              width: 20,
+              height: 20,
+            }} 
+          />
+        ))}
+      </div>
     </div>
   );
 }

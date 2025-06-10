@@ -1,58 +1,53 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
-const initialList = [
-  { id: 0, title: 'Big Bellies', seen: false },
-  { id: 1, title: 'Lunar Landscape', seen: false },
-  { id: 2, title: 'Terracotta Army', seen: false },
+let initialShapes = [
+  { id: 0, type: 'circle', x: 50, y: 100 },
+  { id: 1, type: 'square', x: 150, y: 100 },
+  { id: 2, type: 'circle', x: 250, y: 100 },
 ];
 
-function ItemList({ artworks, onToggle }) {
-  return (
-    <ul style={{ padding: 0, listStyle: 'none' }}>
-      {artworks.map(artwork => (
-        <li key={artwork.id} style={{ marginBottom: 8 }}>
-          <label>
-            <input
-              type="checkbox"
-              checked={artwork.seen}
-              onChange={e => {
-                onToggle(artwork.id, e.target.checked);
-              }}
-            />{' '}
-            {artwork.title}
-          </label>
-        </li>
-      ))}
-    </ul>
+export default function ShapeEditor() {
+  const [shapes, setShapes] = useState(
+    initialShapes
   );
-}
 
-export default function BucketList() {
-  const [myList, setMyList] = useState(initialList);
-  const [yourList, setYourList] = useState(initialList);
-
-  function handleToggleMyList(artworkId, nextSeen) {
-    setMyList(myList =>
-      myList.map(item =>
-        item.id === artworkId ? { ...item, seen: nextSeen } : item
-      )
-    );
-  }
-
-  function handleToggleYourList(artworkId, nextSeen) {
-    setYourList(yourList =>
-      yourList.map(item =>
-        item.id === artworkId ? { ...item, seen: nextSeen } : item
-      )
-    );
+  function handleClick() {
+    const nextShapes = shapes.map(shape => {
+      if (shape.type === 'square') {
+        return shape;
+      } else {
+        return {
+          ...shape,
+          y: shape.y + 50,
+        };
+      }
+    });
+    setShapes(nextShapes);
   }
 
   return (
-    <div style={{ padding: 24 }}>
-      <h2>Minha lista de obras</h2>
-      <ItemList artworks={myList} onToggle={handleToggleMyList} />
-      <h2>Sua lista de obras</h2>
-      <ItemList artworks={yourList} onToggle={handleToggleYourList} />
-    </div>
+    <>
+      <button onClick={handleClick}>
+        Move circles down!
+      </button>
+      <div style={{ position: 'relative', height: '200px', marginTop: '10px' }}>
+        {shapes.map(shape => (
+          <div
+            key={shape.id}
+            style={{
+            background: 'purple',
+            position: 'absolute',
+            left: shape.x,
+            top: shape.y,
+            borderRadius:
+              shape.type === 'circle'
+                ? '50%'
+                : '',
+            width: 20,
+            height: 20,
+          }} />
+        ))}
+      </div>
+    </>
   );
 }

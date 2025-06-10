@@ -17,7 +17,7 @@ export default function Gallery() {
 
   return (
     <div style={{ padding: 24, maxWidth: 400 }}>
-      <h2>Galeria de Esculturas</h2>
+      <h2>Gallery</h2>
       <button
         onClick={handleNextClick}
         style={{
@@ -32,12 +32,15 @@ export default function Gallery() {
           marginRight: 8
         }}
       >
-        Próxima
+        Next
       </button>
+      
       <span style={{ color: "#555" }}>
-        {index + 1} de {sculptureList.length}
+        ({index + 1} of {sculptureList.length})
       </span>
-      <h3 style={{ marginTop: 16 }}>{sculpture.name} por {sculpture.artist}</h3>
+      
+      <h3 style={{ marginTop: 16 }}>{sculpture.name} by {sculpture.artist}</h3>
+      
       <img
         src={sculpture.url}
         alt={sculpture.name}
@@ -62,7 +65,7 @@ export default function Gallery() {
           marginBottom: 8
         }}
       >
-        {showMore ? "Ocultar detalhes" : "Mostrar detalhes"}
+        {showMore ? "Hide details" : "Show details"}
       </button>
       {showMore && (
         <p style={{ marginTop: 8 }}>{sculpture.description}</p>
